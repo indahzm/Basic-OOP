@@ -13,7 +13,7 @@ public class TransactionEntity extends BaseEntity{
 	private Long change;
 	private Long rest;
 	private TransactionStatus status;
-	private Set<TransactionDetail> transactionDetails;
+	private Set<TransactionDetailEntity> transactionDetails;
 	
 	public TransactionEntity(Long cash) {
 		this.id = UUID.randomUUID().toString();
@@ -57,10 +57,10 @@ public class TransactionEntity extends BaseEntity{
 	public void setStatus(TransactionStatus status) {
 		this.status = status;
 	}
-	public Set<TransactionDetail> getTransactionDetails() {
+	public Set<TransactionDetailEntity> getTransactionDetails() {
 		return transactionDetails;
 	}
-	public void setTransactionDetails(Set<TransactionDetail> transactionDetails) {
+	public void setTransactionDetails(Set<TransactionDetailEntity> transactionDetails) {
 		this.transactionDetails = transactionDetails;
 	}
 }

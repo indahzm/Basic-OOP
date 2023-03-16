@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import constant.TransactionStatus;
 import entity.ItemEntity;
-import entity.TransactionDetail;
+import entity.TransactionDetailEntity;
 import entity.TransactionEntity;
 import entity.TransactionModel;
 
@@ -34,7 +34,7 @@ public class TransactionServiceImpl implements TransactionService {
 		TransactionModel transactionModel = new TransactionModel();
 		List<ItemEntity> itemList = new ArrayList<ItemEntity>();
 		Long total = 0L;
-		Set<TransactionDetail> transactionDetailList = new HashSet<TransactionDetail>();
+		Set<TransactionDetailEntity> transactionDetailList = new HashSet<TransactionDetailEntity>();
 		for (String str : items) {
 			String itemName = str.split("-")[0];
 			Integer qty = Integer.valueOf(str.split("-")[1]);
@@ -42,7 +42,7 @@ public class TransactionServiceImpl implements TransactionService {
 			if (item != null) {
 				total += item.getPrice()*qty;
 				item.setAvailable(item.getAvailable() - qty);
-				TransactionDetail transactionDetail = getTransactionDetail(item, qty);
+				TransactionDetailEntity transactionDetail = getTransactionDetail(item, qty);
 				transactionDetail.setTransaction(transaction);
 				transactionDetailList.add(transactionDetail);
 				itemList.add(item);
@@ -76,8 +76,8 @@ public class TransactionServiceImpl implements TransactionService {
 		return transaction;
 	}
 	
-	public TransactionDetail getTransactionDetail(ItemEntity item, Integer quantity) {
-		TransactionDetail transactionDetail = new TransactionDetail();
+	public TransactionDetailEntity getTransactionDetail(ItemEntity item, Integer quantity) {
+		TransactionDetailEntity transactionDetail = new TransactionDetailEntity();
 		transactionDetail.setId(UUID.randomUUID().toString());
 		transactionDetail.setItem(item);
 		transactionDetail.setQuantity(quantity);
