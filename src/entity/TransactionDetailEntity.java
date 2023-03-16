@@ -1,6 +1,6 @@
 package entity;
 
-public class TransactionDetail {
+public class TransactionDetailEntity {
 	private String id;
 	private TransactionEntity transaction;
 	private ItemEntity item;
